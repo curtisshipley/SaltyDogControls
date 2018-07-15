@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <RootNamespace>SaltyDog</RootNamespace>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Authors>Curtis Shipley</Authors>
+    <Company />
+    <Description>A Xamarin control that renders Data Templates based on a selector, allowing simpler XAML</Description>
+    <Copyright>Copyright 2018</Copyright>
+    <PackageLicenseUrl>https://raw.githubusercontent.com/curtisshipley/DataTemplateControl/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/curtisshipley/DataTemplateControl</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/curtisshipley/DataTemplateControl</RepositoryUrl>
+    <PackageTags>Xamarin</PackageTags>
+    <PackageReleaseNotes>Initial Release</PackageReleaseNotes>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Xamarin.Forms" Version="2.5.1.527436" />
+  </ItemGroup>
+
+</Project>

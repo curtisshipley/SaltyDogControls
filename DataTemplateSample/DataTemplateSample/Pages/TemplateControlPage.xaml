@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage 
+	xmlns="http://xamarin.com/schemas/2014/forms"
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	xmlns:sd="clr-namespace:SaltyDog;assembly=SaltyDogControls"
+	Title="{Binding WidgetName}"
+	x:Class="DataTemplateSample.TemplateControlPage">
+
+	<ContentPage.Resources>
+		<ResourceDictionary x:Name="resDict">
+
+			<x:Array x:Key="TemplateList" Type="{x:Type x:String}">
+				<x:String>Template 1</x:String>
+				<x:String>Template 2</x:String>
+			</x:Array>
+
+			<DataTemplate x:Key="Template 1">
+				<ScrollView Orientation="Vertical">
+					
+					<StackLayout Orientation="Vertical">
+						<Label Text="Name:" TextColor="Black" />
+						<Label Text="{Binding WidgetName}" TextColor="Black" FontSize="Medium" Margin="8,0,0,0"/>
+						<Label Text="Description:" TextColor="Black" />
+						<Label Text="{Binding WidgetDescription}" TextColor="Black" FontSize="Medium"/>
+						<Label Text="Price:" TextColor="Black" />
+						<Label Text="{Binding WidgetPrice}" TextColor="Black" FontSize="Medium"/>
+						<Image Source="{Binding WidgetImage}" />
+					</StackLayout>
+
+				</ScrollView>
+			</DataTemplate>
+
+			<DataTemplate x:Key="Template 2">
+				<Grid>
+					<Grid.RowDefinitions>
+						<RowDefinition Height="*" />
+						<RowDefinition Height="*" />
+						<RowDefinition Height="*" />
+					</Grid.RowDefinitions>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="*" />
+						<ColumnDefinition Width="*" />
+					</Grid.ColumnDefinitions>
+					<Image 
+						Source="{Binding WidgetImage}" 
+						Grid.ColumnSpan="2" 
+						Grid.Row="0" 
+						Grid.Column="0" />
+					<Label Text="{Binding WidgetName}" TextColor="Black" FontSize="Small" Grid.Row="1" Grid.Column="0" />
+					<Label Text="{Binding WidgetDescription}" TextColor="Black" FontSize="Micro"  Grid.Row="1" Grid.Column="1" />
+					<Label Text="{Binding WidgetPrice}" TextColor="Black" FontSize="Large"  Grid.Row="2" Grid.ColumnSpan="2"/>
+				</Grid>
+			</DataTemplate>
+
+		</ResourceDictionary>
+	</ContentPage.Resources>
+
+	<StackLayout Spacing="0" Padding="16">
+
+		<Label Text="Widget Viewer" HorizontalOptions="Center" TextColor="Blue" FontSize="Large" Margin="0,0,0,16" />
+
+		<Label Text="Choose Widget Template:" TextColor="Black" FontSize="Medium" />
+
+		<Picker x:Name="ThePicker" ItemsSource="{StaticResource TemplateList}" SelectedIndex="0" Margin="0,0,0,32" />
+
+		<sd:DataTemplateControl Padding="0" VerticalOptions="FillAndExpand"  HorizontalOptions="FillAndExpand" 
+			Selector="{Binding Source={x:Reference ThePicker}, Path=SelectedItem}"
+			TemplateDictionary="{Binding Source={x:Reference resDict}}" 
+			/>
+
+	</StackLayout>
+
+</ContentPage>

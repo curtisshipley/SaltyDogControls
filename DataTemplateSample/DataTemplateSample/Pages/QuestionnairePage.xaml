@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+			 xmlns:sd="clr-namespace:SaltyDog;assembly=SaltyDogControls"			 
+			 x:Class="DataTemplateSample.Pages.QuestionnairePage">
+	<ContentPage.Resources>
+		<ResourceDictionary x:Name="resDict">
+
+			<DataTemplate x:Key="StringQuestion">
+				<StackLayout>
+					<Label Text="{Binding DisplayName}" TextColor="Black" FontSize="Medium"/>
+					<Label Text="{Binding QuestionType}" />
+					<Entry Keyboard="Default" Text="{Binding Value}" />
+				</StackLayout>
+			</DataTemplate>
+
+			<DataTemplate x:Key="IntQuestion">
+				<StackLayout>
+					<Label Text="{Binding DisplayName}" TextColor="Black" FontSize="Medium"/>
+					<Label Text="{Binding QuestionType}" />
+					<Entry Keyboard="Numeric" Text="{Binding Value}" />
+				</StackLayout>
+			</DataTemplate>
+
+			<DataTemplate x:Key="BooleanQuestion">
+				<StackLayout Orientation="Vertical">
+					<Label Text="{Binding DisplayName}" TextColor="Black" FontSize="Medium"/>
+					<Label Text="{Binding QuestionType}" />
+					<Switch IsToggled="{Binding Value}" />
+				</StackLayout>
+			</DataTemplate>
+
+		</ResourceDictionary>
+	</ContentPage.Resources>
+
+	<StackLayout Spacing="0" Padding="16">
+
+		<sd:StackTemplateControl 
+			x:Name="stackTemplate"
+			Spacing="0" 
+			Padding="16" 
+			ItemsSource="{Binding Questions}"
+			TemplateDictionary="{Binding Source={x:Reference resDict}}"
+			>
+		</sd:StackTemplateControl>
+		<Button Text="Submit" Command="{Binding CmdSubmit}" />
+	</StackLayout>
+</ContentPage>

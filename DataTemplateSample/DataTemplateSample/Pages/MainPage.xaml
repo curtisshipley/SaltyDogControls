@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+			 xmlns:local="clr-namespace:DataTemplateSample"
+			 xmlns:sd="clr-namespace:SaltyDog;assembly=SaltyDogControls"
+			 x:Name="me"
+			 x:Class="DataTemplateSample.MainPage">
+
+	<StackLayout>
+
+		<Label Text="Select A Screen" FontSize="Large" TextColor="Black" Margin="16" HorizontalTextAlignment="Center"/>
+		<sd:StackTemplateControl Spacing="0" Padding="16" ItemsSource="{Binding Buttons}">
+			<sd:StackTemplateControl.DataTemplate>
+				<DataTemplate >
+					<Button Text="{Binding Name}" Command="{Binding Source={x:Reference me}, Path=BindingContext.CmdGoThere}" CommandParameter="{Binding}" HeightRequest="64" BackgroundColor="{Binding Color}" FontSize="Large" TextColor="White" Margin="0, 16, 0, 16"/>
+				</DataTemplate>
+			</sd:StackTemplateControl.DataTemplate>
+		</sd:StackTemplateControl>
+		<Label Text="(This page uses a StackTemplateControl with a default template)" FontSize="Small" TextColor="Gray" HorizontalOptions="Center" HorizontalTextAlignment="Center" Margin="32"/>
+
+	</StackLayout>
+
+
+</ContentPage>
